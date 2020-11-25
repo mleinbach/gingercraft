@@ -1,0 +1,24 @@
+version: '3'
+services:
+  rlcraft-server:
+    image: mitchleinbach/rlcraft-server:2
+    hostname: rlcraft-server
+    volumes:
+      - rlcraft-schedule:/etc/periodic
+      - rlcraft-backups:/opt/minecraft/plugin_data/backups
+      - rlcraft-worlds:/opt/minecraft/worlds
+    ports:
+      - '30068:30068'
+    restart: always
+    tty: true
+    depends_on:
+      - velocity
+  velocity:
+    image: mitchleinbach/velocity:0
+    hostname: velocity
+    ports:
+      - '25577:25577'
+volumes:
+  rlcraft-schedule:
+  rlcraft-backups:
+  rlcraft-worlds:
