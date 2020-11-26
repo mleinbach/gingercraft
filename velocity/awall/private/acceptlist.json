@@ -1,0 +1,6 @@
+{
+    "description": "list of specific IPs to accept inbound traffic from",
+    "variables" : {
+        "acceptlist": ["127.0.0.1"]
+    }
+}
