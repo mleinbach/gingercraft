@@ -1,24 +1,42 @@
 version: '3'
 services:
+  mongo:
+    image: mongo:4.4.2-bionic
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
   rlcraft-server:
-    image: mitchleinbach/rlcraft-server:2
+    image: mitchleinbach/rlcraft-server
     hostname: rlcraft-server
-    volumes:
-      - rlcraft-schedule:/etc/periodic
-      - rlcraft-backups:/opt/minecraft/plugin_data/backups
-      - rlcraft-worlds:/opt/minecraft/worlds
+#    volumes:
+#      - rlcraft-schedule:/etc/periodic
+#      - rlcraft-backups:/opt/minecraft/plugin_data/backups
+#      - rlcraft-worlds:/opt/minecraft/worlds
     ports:
       - '30068:30068'
     restart: always
     tty: true
     depends_on:
       - velocity
+  lobby-server:
+    image: mitchleinbach/lobby
+    hostname: lobby-server
+    ports:
+      - '30066:30066'
+    volumes:
+      - lobby-data:/opt/minecraft/volume
+    tty: true
+    stdin_open: true
+    depends_on:
+      - velocity
   velocity:
-    image: mitchleinbach/velocity:0
+    image: mitchleinbach/velocity
     hostname: velocity
     ports:
       - '25577:25577'
 volumes:
-  rlcraft-schedule:
-  rlcraft-backups:
-  rlcraft-worlds:
+#  rlcraft-schedule:
+#  rlcraft-backups:
+#  rlcraft-worlds:
+  lobby-data:

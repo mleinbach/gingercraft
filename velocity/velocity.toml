@@ -41,7 +41,7 @@ forwarding-secret = ""
 # 
 # If your network runs one modpack consistently, consider using ping-passthrough = "mods"
 # instead for a nicer display in the server list.
-announce-forge = false
+announce-forge = true
 
 # If enabled (default is false) and the proxy is in online mode, Velocity will kick
 # any existing player who is online if a duplicate connection attempt is made.
@@ -60,19 +60,19 @@ kick-existing-players = false
 #                  description and mod list.
 # - "all":         Uses the backend server's response as the proxy response. The Velocity
 #                  configuration is used if no servers could be contacted.
-ping-passthrough = "DISABLED"
+ping-passthrough = "all"
 
 [servers]
 # Configure your servers here. Each key represents the server's name, and the value
 # represents the IP address of the server to connect to.
-# lobby = "127.0.0.1:30066"
+lobby = "lobby-server:30066"
 # factions = "127.0.0.1:30067"
 # minigames = "127.0.0.1:30068"
 rlcraft = "rlcraft-server:30068"
 
 # In what order we should try servers when a player logs in or is kicked from aserver.
 try = [
-  "rlcraft"
+  "lobby"
 ]
 
 [forced-hosts]
