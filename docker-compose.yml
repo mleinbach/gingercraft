@@ -5,9 +5,11 @@ services:
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_PASSWORD: hunter2
+    volumes:
+      - mongo-data:/data/db
   rlcraft-server:
-    image: mitchleinbach/rlcraft-server
+    image: mitchleinbach/rlcraft
     hostname: rlcraft-server
 #    volumes:
 #      - rlcraft-schedule:/etc/periodic
@@ -17,8 +19,10 @@ services:
       - '30068:30068'
     restart: always
     tty: true
+    stdin_open: true
     depends_on:
       - velocity
+      - mongo
   lobby-server:
     image: mitchleinbach/lobby
     hostname: lobby-server
@@ -30,13 +34,17 @@ services:
     stdin_open: true
     depends_on:
       - velocity
+      - mongo
   velocity:
     image: mitchleinbach/velocity
     hostname: velocity
     ports:
       - '25577:25577'
+    depends_on:
+      - mongo
 volumes:
 #  rlcraft-schedule:
 #  rlcraft-backups:
 #  rlcraft-worlds:
   lobby-data:
+  mongo-data:

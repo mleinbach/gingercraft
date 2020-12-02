@@ -12,8 +12,7 @@ RUN apk add --no-cache \
 
 WORKDIR /var/velocity
 COPY . /var/velocity
-RUN mkdir plugins \
-    && wget -O velocity.jar --quiet https://versions.velocitypowered.com/download/1.1.2.jar \
+RUN wget -O velocity.jar --quiet https://versions.velocitypowered.com/download/1.1.2.jar \
     && wget -O plugins/LuckPerms-Velocity-5.2.45.jar --quiet https://ci.lucko.me/job/LuckPerms/1210/artifact/velocity/build/libs/LuckPerms-Velocity-5.2.45.jar
 
 ENTRYPOINT [ "tini", "--" ]
