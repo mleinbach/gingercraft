@@ -13,8 +13,6 @@ services:
     hostname: rlcraft-server
     volumes:
       - rlcraft-world:/opt/minecraft/world
-    ports:
-      - '30068:30068'
     restart: always
     tty: true
     stdin_open: true
@@ -24,8 +22,6 @@ services:
   lobby-server:
     image: mitchleinbach/lobby
     hostname: lobby-server
-    ports:
-      - '30066:30066'
     volumes:
       - lobby-world:/opt/minecraft/world
     tty: true
