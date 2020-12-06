@@ -1,6 +1,4 @@
 #!/bin/sh
-java -jar paper.jar --plugins volume/plugins --world-dir volume/worlds
-#!/bin/sh
 term_handler()
 {
     trap 'exit 1' SIGINT

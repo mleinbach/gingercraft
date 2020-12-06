@@ -11,12 +11,8 @@ services:
   rlcraft-server:
     image: mitchleinbach/rlcraft
     hostname: rlcraft-server
-#    volumes:
-#      - rlcraft-schedule:/etc/periodic
-#      - rlcraft-backups:/opt/minecraft/plugin_data/backups
-#      - rlcraft-worlds:/opt/minecraft/worlds
-    ports:
-      - '30068:30068'
+    volumes:
+      - rlcraft-world:/opt/minecraft/world
     restart: always
     tty: true
     stdin_open: true
@@ -26,10 +22,8 @@ services:
   lobby-server:
     image: mitchleinbach/lobby
     hostname: lobby-server
-    ports:
-      - '30066:30066'
     volumes:
-      - lobby-data:/opt/minecraft/volume
+      - lobby-world:/opt/minecraft/world
     tty: true
     stdin_open: true
     depends_on:
@@ -43,8 +37,6 @@ services:
     depends_on:
       - mongo
 volumes:
-#  rlcraft-schedule:
-#  rlcraft-backups:
-#  rlcraft-worlds:
-  lobby-data:
+  lobby-world:
+  rlcraft-world:
   mongo-data:
