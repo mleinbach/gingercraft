@@ -4,12 +4,11 @@ term_handler()
     trap 'exit 1' SIGINT
     echo "Stopping. Press ctrl-c again to force quit"
     if [[ ! -z "$(screen -ls $session_name)" ]]; then
-        echo "Saving..."
+        screen -S $session_name -X stuff "say the server is shutting down in 10 seconds\n\n"
+        sleep 10
         screen -S $session_name -X stuff "save-all\n\n"
-        sleep 5
-        echo "Exiting..."
         screen -S $session_name -X stuff "stop\n\n"
-        sleep 5
+        sleep 10
         exit 0
     else
         echo "Screen session not found"
