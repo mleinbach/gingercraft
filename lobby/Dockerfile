@@ -23,14 +23,6 @@ RUN wget --quiet -O paper.jar https://papermc.io/api/v1/paper/1.12.2/1618/downlo
     # accept eula
     && echo eula=${EULA} > eula.txt
 
-#RUN screen -dmS lobby sh start_server.sh \
-#    && echo "waiting for server to start..." \
-#    && sleep 20 \
-#    && sessionName=$(screen -ls | awk '/\.lobby\t/ {print $1;exit;}') \
-#    && echo "attempting to refresh ${sessionName} iportals" \
-#    && screen -S $sessionName -X stuff "iportal refresh rlcraft\n" \
-#    && sleep 5
-
 VOLUME ${MINECRAFT_DIR}/world
 
 ENTRYPOINT ["tini", "--"]

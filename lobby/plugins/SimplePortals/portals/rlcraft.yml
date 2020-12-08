@@ -1,0 +1,12 @@
+last-fill-material: AIR
+point-one: world,23.0,8.0,-2.0,0.0,0.0
+point-two: world,23.0,2.0,2.0,0.0,0.0
+teleport-location: world,20.61637746334127,2.0,0.44940603519182015,277.81433,1.3812293
+commands-only: false
+commands: []
+disabled: false
+message: ''
+title: 'RLCraft'
+sub-title: 'Welcome to Hell'
+bar-message: ''
+portal-server: rlcraft
