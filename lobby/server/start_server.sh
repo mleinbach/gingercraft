@@ -18,8 +18,8 @@ term_handler()
 trap 'kill ${!}; term_handler' SIGTERM SIGINT
 
 screen -wipe
-screen -dmS $WORLD_NAME java -Dlog4j.configurationFile=log4j2.xml -jar paper.jar
-session_name=$(screen -ls | awk '/\.lobby\t/ {print $1;exit;}')
+screen -dmS $WORLD_NAME "$JAVACMD" -Dlog4j.configurationFile=log4j2.xml ${JAVA_PARAMETERS} -jar ${SERVER_JAR} ${SERVER_PARAMS}
+session_name=$(screen -ls | awk '/\.<world-name>\t/ {print $1;exit;}')
 
 while true; do
     if [[ -z "$(screen -ls $session_name)" ]]; then

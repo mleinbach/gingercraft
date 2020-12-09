@@ -1,0 +1,12 @@
+last-fill-material: AIR
+point-one: world,17.0,2.0,-4.0,0.0,0.0
+point-two: world,21.0,8.0,-4.0,0.0,0.0
+teleport-location: world,0.8287939764231693,2.0,0.4669876716946574,269.8498,-2.1118388
+commands-only: false
+commands: []
+disabled: false
+message: ''
+title: 'FTB Stoneblock 2'
+sub-title: ''
+bar-message: ''
+portal-server: stoneblock2

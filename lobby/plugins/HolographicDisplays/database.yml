@@ -1,0 +1,19 @@
+portal1_info:
+  location: world, 22.429, 5.500, 0.493
+  lines:
+  - RLCraft
+  - 'MC Ver: 1.12.2'
+  - 'Forge Ver: 14.23.5.2838'
+  - 'ModPack Ver: 2.8.2'
+portal2_info:
+  location: world, 19.543, 5.500, -2.393
+  lines:
+  - FTB StoneBlock 2
+  - 'MC Ver: 1.12.2'
+  - 'Forge Ver: 14.23.4.2838'
+  - 'ModPack Ver: 1.15.0'
+portal3_info:
+  location: world, 19.594, 5.500, 3.401
+  lines:
+  - Vanilla
+  - PaperMC 1.12.2

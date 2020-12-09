@@ -9,7 +9,8 @@ RUN apk add --no-cache \
 
 ENV MINECRAFT_DIR=/opt/minecraft \
     EULA=true \
-    WORLD_NAME=rlcraft
+    WORLD_NAME=rlcraft \
+    SERVER_PORT=30068
 
 WORKDIR ${MINECRAFT_DIR}
 # download forge, mods, mod-packs from forge cdn
@@ -33,6 +34,7 @@ RUN wget --quiet https://files.minecraftforge.net/maven/net/minecraftforge/forge
 # configure rlcraft server
 ADD server/ ${MINECRAFT_DIR}
 ADD config/  ${MINECRAFT_DIR}/config/
+RUN sed -i "s/<server-port>/${SERVER_PORT}/g" server.properties
 
 ENTRYPOINT ["tini", "--"]
 CMD [ "/bin/sh", "start_server.sh" ]

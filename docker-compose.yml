@@ -1,5 +1,17 @@
 version: '3'
 services:
+  lobby-server:
+    image: mitchleinbach/lobby
+    hostname: lobby-server
+    volumes:
+      - lobby-world:/opt/minecraft/world
+      - lobby-plugins:/opt/minecraft/plugins
+    restart: always
+    tty: true
+    stdin_open: true
+    depends_on:
+      - velocity
+      - mongo
   mongo:
     image: mongo:4.4.2-bionic
     restart: always
@@ -19,11 +31,23 @@ services:
     depends_on:
       - velocity
       - mongo
-  lobby-server:
-    image: mitchleinbach/lobby
-    hostname: lobby-server
+  stoneblock2-server:
+    image: mitchleinbach/ftb_stoneblock2
+    hostname: stoneblock2-server
     volumes:
-      - lobby-world:/opt/minecraft/world
+      - stoneblock2-world:/opt/minecraft/world
+    restart: always
+    tty: true
+    stdin_open: true
+    depends_on:
+      - velocity
+      - mongo
+  vanilla-server:
+    image: mitchleinbach/vanilla
+    hostname: vanilla-server
+    volumes:
+      - vanilla-world:/opt/minecraft/world
+      - vanilla-world:/opt/minecraft/plugins
     restart: always
     tty: true
     stdin_open: true
@@ -39,6 +63,10 @@ services:
     depends_on:
       - mongo
 volumes:
+  lobby-plugins:
   lobby-world:
-  rlcraft-world:
   mongo-data:
+  stoneblock2-world:
+  rlcraft-world:
+  vanilla-plugins:
+  vanilla-world:

@@ -1,0 +1,12 @@
+last-fill-material: AIR
+point-one: world,17.0,2.0,4.0,0.0,0.0
+point-two: world,21.0,8.0,4.0,0.0,0.0
+teleport-location: world,15.145128002468175,7.415141864263009,-0.2745051734181597,296.69067,26.538086
+commands-only: false
+commands: []
+disabled: false
+message: ''
+title: 'Vanilla'
+sub-title: 'basic ass-minecraft'
+bar-message: ''
+portal-server: vanilla

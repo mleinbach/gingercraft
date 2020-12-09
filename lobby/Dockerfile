@@ -9,7 +9,12 @@ RUN apk add --no-cache \
 
 ENV MINECRAFT_DIR='/opt/minecraft' \
     EULA=true \
-    WORLD_NAME=lobby
+    WORLD_NAME=lobby \
+    SERVER_PARAMS="" \
+    SERVER_JAR="paper.jar" \
+    JAVACMD="java" \
+    SERVER_PORT=30066
+ENV JAVA_PARAMETERS="-Dpaper.disableChannelLimit=true"
 
 WORKDIR ${MINECRAFT_DIR}
 ADD server/ ${MINECRAFT_DIR}/
@@ -19,9 +24,11 @@ ADD plugins.tar.gz ${MINECRAFT_DIR}/plugins
 COPY plugins/ ${MINECRAFT_DIR}/plugins
 ADD world.tar.gz ${MINECRAFT_DIR}/world
 #COPY world/server.properties ${MINECRAFT_DIR}/worlds/${WORLD_NAME}/server.properties
-RUN wget --quiet -O paper.jar https://papermc.io/api/v1/paper/1.12.2/1618/download \
+RUN wget --quiet -O ${SERVER_JAR} https://papermc.io/api/v1/paper/1.12.2/1618/download \
     # accept eula
-    && echo eula=${EULA} > eula.txt
+    && echo eula=${EULA} > eula.txt \
+    && sed -i "s/<world-name>/${WORLD_NAME}/g" start_server.sh \
+    && sed -i "s/<server-port>/${SERVER_PORT}/g" server.properties
 
 VOLUME ${MINECRAFT_DIR}/world
 
