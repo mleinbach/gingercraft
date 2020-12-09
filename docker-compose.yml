@@ -4,7 +4,7 @@ services:
     image: mitchleinbach/lobby
     hostname: lobby-server
     volumes:
-      - lobby-world:/opt/minecraft/world
+      - lobby-world:/opt/minecraft/worlds
       - lobby-plugins:/opt/minecraft/plugins
     restart: always
     tty: true
@@ -46,7 +46,7 @@ services:
     image: mitchleinbach/vanilla
     hostname: vanilla-server
     volumes:
-      - vanilla-world:/opt/minecraft/world
+      - vanilla-world:/opt/minecraft/worlds
       - vanilla-world:/opt/minecraft/plugins
     restart: always
     tty: true

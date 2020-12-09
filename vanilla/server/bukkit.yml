@@ -1,5 +1,5 @@
 settings:
-  allow-end: false
+  allow-end: true
   warn-on-overload: true
   permissions-file: permissions.yml
   update-folder: update
@@ -8,6 +8,7 @@ settings:
   query-plugins: true
   deprecated-verbose: default
   shutdown-message: Server closed
+  world-container: worlds
 spawn-limits:
   monsters: 70
   animals: 15

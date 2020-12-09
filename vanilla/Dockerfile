@@ -29,7 +29,5 @@ RUN wget --quiet -O ${SERVER_JAR} https://papermc.io/api/v1/paper/1.12.2/1618/do
     && sed -i "s/<world-name>/${WORLD_NAME}/g" start_server.sh \
     && sed -i "s/<server-port>/${SERVER_PORT}/g" server.properties
 
-VOLUME ${MINECRAFT_DIR}/world
-
 ENTRYPOINT ["tini", "--"]
 CMD [ "/bin/sh", "start_server.sh" ]
